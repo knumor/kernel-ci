@@ -134,16 +134,16 @@ GRSEC_KEY=${GRSEC_KEY:="2525FE49"}
 GCC_VERSION="$(gcc -dumpversion|awk -F "." '{print $1"."$2}')"
 STOCK_CONFIG=${STOCK_CONFIG:="config-3.16.0-0.bpo.4-amd64"}
 
-if [ "$GRSEC" = "true" ]; then
+#if [ "$GRSEC" = "true" ]; then
   # Get the latest grsec patch
-  LATEST_GRSEC_PATCH="$(curl "${GRSEC_RSS}"|egrep -o 'https[^ ]*.patch'|sort|uniq|head -1)"
-  LATEST_GRSEC_KERNEL_VERSION="$(echo "$LATEST_GRSEC_PATCH"|cut -f 3 -d -;)"
-  KERNEL_VERSION="$LATEST_GRSEC_KERNEL_VERSION"
-  GRSEC_TRUSTEDLONGID=$(echo "$GRSEC_TRUSTED_FINGERPRINT" |  sed "s/ //g")
-else
+#  LATEST_GRSEC_PATCH="$(curl "${GRSEC_RSS}"|egrep -o 'https[^ ]*.patch'|sort|uniq|head -1)"
+#  LATEST_GRSEC_KERNEL_VERSION="$(echo "$LATEST_GRSEC_PATCH"|cut -f 3 -d -;)"
+#  KERNEL_VERSION="$LATEST_GRSEC_KERNEL_VERSION"
+#  GRSEC_TRUSTEDLONGID=$(echo "$GRSEC_TRUSTED_FINGERPRINT" |  sed "s/ //g")
+#else
   #KERNEL_VERSION=${KERNEL_VERSION:=$(curl --silent https://www.kernel.org/finger_banner | awk '{print $11}'| head -2|tail -1)}
-  KERNEL_VERSION=4.0
-fi
+KERNEL_VERSION=4.0
+#fi
 
 # -------------PRE-FLIGHT---------------
 
