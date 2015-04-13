@@ -3,6 +3,7 @@ language: c
 env:
  - GRSEC=true
  - GRSEC=false
+ - KERNEL_VERSION=4.0
 
 before_install:
   - gem install package_cloud

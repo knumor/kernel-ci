@@ -141,7 +141,7 @@ if [ "$GRSEC" = "true" ]; then
   KERNEL_VERSION="$LATEST_GRSEC_KERNEL_VERSION"
   GRSEC_TRUSTEDLONGID=$(echo "$GRSEC_TRUSTED_FINGERPRINT" |  sed "s/ //g")
 else
-  KERNEL_VERSION=$(curl --silent https://www.kernel.org/finger_banner | awk '{print $11}'| head -2|tail -1)
+  KERNEL_VERSION=${KERNEL_VERSION:=$(curl --silent https://www.kernel.org/finger_banner | awk '{print $11}'| head -2|tail -1)}
 fi
 
 # -------------PRE-FLIGHT---------------
