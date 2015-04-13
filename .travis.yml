@@ -1,8 +1,6 @@
 language: c
 
 env:
- - GRSEC=true
- - GRSEC=false
  - KERNEL_VERSION=4.0
 
 before_install:
@@ -18,4 +16,4 @@ before_install:
 
 script:
   - sudo sed -i -e 's/^Defaults\tsecure_path.*$//' /etc/sudoers
-  - sudo -E ./buildkernel.sh
+  - sudo -E KERNEL_VERSION=4.0 ./buildkernel.sh
