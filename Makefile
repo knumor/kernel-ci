@@ -1,6 +1,7 @@
 NAME = linux-kernel
 REPO = contyard.yourcompany.com/$(NAME)
 TAG = $(git describe)
+TARGETDIR ?= /mnt/storage
 
 build:
 	docker build -t $(REPO):$(TAG) .
@@ -8,7 +9,7 @@ build:
 	@echo "make push"
 
 push:
-	docker run -v .:/mnt/storage $(REPO):$(TAG) bash -c "cp *.deb /mnt/storage/"
+	docker run -v $(TARGETDIR):/mnt/storage $(REPO):$(TAG) bash -c "cp *.deb /mnt/storage/"
 
 clean:
 	docker rmi -f $(REPO):$(TAG)
