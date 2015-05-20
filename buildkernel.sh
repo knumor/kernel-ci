@@ -118,7 +118,7 @@ set -xe
 APT_UPDATE=${APT_UPDATE:-"true"}
 TRUSTED_FINGERPRINT=${TRUSTED_FINGERPRINT:-"C75D C40A 11D7 AF88 9981  ED5B C86B A06A 517D 0F0E"}
 VERSION_POSTFIX=${VERSION_POSTFIX:-"-ci"}
-SOURCE_URL_BASE=${SOURCE_URL_BASE:-"https://kernel.org/pub/linux/kernel/v4.x"}
+SOURCE_URL_BASE=${SOURCE_URL_BASE:-"https://kernel.org/pub/linux/kernel/v3.x"}
 KEYSERVER=${KEYSERVER:-"x-hkp://pool.sks-keyservers.net"}
 KERNEL_ORG_KEY=${KERNEL_ORG_KEY:-"6092693E"}
 BUILD_ONLY_LOADED_MODULES=${BUILD_ONLY_LOADED_MODULES:-"false"}
@@ -141,7 +141,7 @@ if [ "$GRSEC" = "true" ]; then
   KERNEL_VERSION="$LATEST_GRSEC_KERNEL_VERSION"
   GRSEC_TRUSTEDLONGID=$(echo "$GRSEC_TRUSTED_FINGERPRINT" |  sed "s/ //g")
 else
-  KERNEL_VERSION=$(curl --silent https://www.kernel.org/finger_banner | awk '{print $11}'| head -2|tail -1)
+  KERNEL_VERSION=$(curl --silent https://www.kernel.org/finger_banner | awk '{print $11}'| head -4|tail -1)
 fi
 
 # -------------PRE-FLIGHT---------------
