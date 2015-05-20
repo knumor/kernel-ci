@@ -11,4 +11,4 @@ WORKDIR /app
 
 ADD * /app/
 
-RUN chmod +x buildkernel.sh && ./buildkernel.sh
+RUN chmod +x buildkernel.sh && sync && sleep 1 && ./buildkernel.sh
