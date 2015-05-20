@@ -8,7 +8,7 @@ build:
 	@echo "make push"
 
 push:
-	docker run -v /mnt/storage/:/mnt/storage $(REPO):$(TAG) bash -c "cp *.deb /mnt/storage/"
+	docker run -v .:/mnt/storage $(REPO):$(TAG) bash -c "cp *.deb /mnt/storage/"
 
 clean:
 	docker rmi -f $(REPO):$(TAG)
